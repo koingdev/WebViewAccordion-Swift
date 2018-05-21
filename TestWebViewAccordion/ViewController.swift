@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var lastCell = AccordionCell()
     var arrHtmlString = [String]()
     
-    static var webViewHeight: [CGFloat] = [0, 0, 0, 0, 0]
+    var webViewHeight: [CGFloat] = [0, 0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == cellTag {
-            return ViewController.webViewHeight[cellTag]
+            return webViewHeight[cellTag]
         } else {
             return 60
         }
@@ -48,9 +48,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccordionCell") as! AccordionCell
         let index = indexPath.row
+        cell.webView.delegate = self
+        cell.webView.loadHTMLString(arrHtmlString[index], baseURL: nil)
         cell.webView.tag = index
         cell.toggleAccordion.tag = index
-        cell.webView.loadHTMLString(arrHtmlString[index], baseURL: nil)
         cell.toggleAccordion.setTitle("Accordion \(index)", for: .normal)
         cell.toggleAccordion.addTarget(self, action: #selector(cellOpened), for: .touchUpInside)
         return cell
@@ -61,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let previousCellTag = cellTag
         if lastCell.cellExists {
             lastCell.cellExists = false
-            lastCell.animate(duration: 0.1, completion: { [unowned self] in
+            lastCell.animate(duration: 0.15, completion: { [unowned self] in
                 self.view.layoutIfNeeded()
             })
             if sender.tag == cellTag {
@@ -73,7 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cellTag = sender.tag
             lastCell = tableView.cellForRow(at: IndexPath(row: cellTag, section: 0)) as! AccordionCell
             lastCell.cellExists = true
-            lastCell.animate(duration: 0.1, completion: { [unowned self] in
+            lastCell.animate(duration: 0.15, completion: { [unowned self] in
                 self.view.layoutIfNeeded()
             })
         }
@@ -96,4 +97,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         </html><body><p>コンタクトレンズは目に直接のせて使用する医療機器です。眼科医に指示されたことや添付文書に書かれているレンズの取扱い方 法やレンズケアの方法に従い使用しましょう。使い方を誤ると角膜潰瘍などの重い眼障害が発生することがあります。</p></body></html>
     """
     
+}
+
+extension ViewController: UIWebViewDelegate {
+
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        webView.frame.size = webView.scrollView.contentSize
+        webViewHeight[webView.tag] = webView.scrollView.contentSize.height
+    }
+
 }

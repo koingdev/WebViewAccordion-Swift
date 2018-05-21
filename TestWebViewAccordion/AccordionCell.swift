@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AccordionCell: UITableViewCell, UIWebViewDelegate {
+class AccordionCell: UITableViewCell {
     
     var cellExists = false
     
-    @IBOutlet var toggleAccordion: UIButton!
+    @IBOutlet weak var toggleAccordion: UIButton!
     
     @IBOutlet weak var webView: UIWebView! {
         didSet {
@@ -23,15 +23,7 @@ class AccordionCell: UITableViewCell, UIWebViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        webView.delegate = self
         contentView.backgroundColor = UIColor.init(red: 50/255, green: 54/255, blue: 64/255, alpha: 1)
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        if let contentHeight = webView.stringByEvaluatingJavaScript(from: "document.body.scrollHeight") {
-            let height = (contentHeight as NSString).floatValue
-            ViewController.webViewHeight[webView.tag] = CGFloat(height) + 20.0
-        }
     }
     
     func animate(duration: Double, completion: @escaping () -> Void) {
