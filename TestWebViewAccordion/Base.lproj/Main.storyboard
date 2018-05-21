@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleColorEmoji@2x.ttc">
+            <string>AppleColorEmoji</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestWebViewAccordion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pcz-u0-BFI"/>
+                        <viewControllerLayoutGuide type="bottom" id="P2o-Ac-mcF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="320" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7qs-97-FZ5">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccordionCell" id="ezb-zc-R91" customClass="AccordionCell" customModule="TestWebViewAccordion" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="320"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ezb-zc-R91" id="r72-Zn-y7h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikY-u0-xbg">
+                                                    <rect key="frame" x="30" y="0.0" width="315" height="44"/>
+                                                    <subviews>
+                                                        <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M8-Dl-n3t">
+                                                            <rect key="frame" x="0.0" y="0.0" width="315" height="44"/>
+                                                            <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="24"/>
+                                                            <state key="normal" title="Accordion Menu">
+                                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="7M8-Dl-n3t" secondAttribute="trailing" id="10m-0h-SWb"/>
+                                                        <constraint firstItem="7M8-Dl-n3t" firstAttribute="leading" secondItem="ikY-u0-xbg" secondAttribute="leading" id="FJz-Dt-C7G"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7M8-Dl-n3t" secondAttribute="bottom" id="SWP-IA-qer"/>
+                                                        <constraint firstItem="7M8-Dl-n3t" firstAttribute="top" secondItem="ikY-u0-xbg" secondAttribute="top" id="e2L-vE-1Ne"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3c-Ol-HyG">
+                                                    <rect key="frame" x="30" y="54" width="315" height="155.5"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </webView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="h3c-Ol-HyG" secondAttribute="bottom" constant="10" id="4xx-JH-C3a"/>
+                                                <constraint firstItem="h3c-Ol-HyG" firstAttribute="top" secondItem="ikY-u0-xbg" secondAttribute="bottom" constant="10" id="6Kn-6I-9hR"/>
+                                                <constraint firstAttribute="trailing" secondItem="ikY-u0-xbg" secondAttribute="trailing" constant="30" id="Qex-gf-mtI"/>
+                                                <constraint firstItem="ikY-u0-xbg" firstAttribute="top" secondItem="r72-Zn-y7h" secondAttribute="top" id="Rjm-zv-M9f"/>
+                                                <constraint firstAttribute="trailing" secondItem="h3c-Ol-HyG" secondAttribute="trailing" constant="30" id="ULH-m2-FGg"/>
+                                                <constraint firstItem="ikY-u0-xbg" firstAttribute="leading" secondItem="r72-Zn-y7h" secondAttribute="leading" constant="30" id="e1j-Yl-gUG"/>
+                                                <constraint firstItem="h3c-Ol-HyG" firstAttribute="leading" secondItem="r72-Zn-y7h" secondAttribute="leading" constant="30" id="hfM-mY-7WX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="toggleAccordion" destination="7M8-Dl-n3t" id="W1l-l1-sdg"/>
+                                            <outlet property="webView" destination="h3c-Ol-HyG" id="kd3-Qt-4eW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7qs-97-FZ5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1ud-wV-jbo"/>
+                            <constraint firstItem="7qs-97-FZ5" firstAttribute="top" secondItem="pcz-u0-BFI" secondAttribute="bottom" constant="50" id="RFm-iz-4Ac"/>
+                            <constraint firstItem="P2o-Ac-mcF" firstAttribute="top" secondItem="7qs-97-FZ5" secondAttribute="bottom" id="YIe-Wn-y51"/>
+                            <constraint firstAttribute="trailing" secondItem="7qs-97-FZ5" secondAttribute="trailing" id="nj4-NU-5Le"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="7qs-97-FZ5" id="2rg-67-rPx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="31.934032983508249"/>
+        </scene>
+    </scenes>
+</document>
