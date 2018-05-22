@@ -12,13 +12,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tagCount = 0
     var cellTag = -1
-    var arrCellTags: [Int] = []
-    var lastCell = AccordionCell()
-    var arrHtmlString = [String]()
-    
+    var previousCell = AccordionCell()
     var webViewHeight: [CGFloat] = [0, 0, 0, 0, 0]
+    var arrHtmlString = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,21 +57,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc func cellOpened(_ sender: UIButton) {
         tableView.beginUpdates()
         let previousCellTag = cellTag
-        if lastCell.cellExists {
-            lastCell.cellExists = false
-            lastCell.animate(duration: 0.15, completion: { [unowned self] in
+        if previousCell.isOpened {
+            previousCell.isOpened = false
+            previousCell.animate(duration: 0.15, completion: { [unowned self] in
                 self.view.layoutIfNeeded()
             })
             if sender.tag == cellTag {
                 cellTag = -1
-                lastCell = AccordionCell()
+                previousCell = AccordionCell()
             }
         }
         if sender.tag != previousCellTag {
             cellTag = sender.tag
-            lastCell = tableView.cellForRow(at: IndexPath(row: cellTag, section: 0)) as! AccordionCell
-            lastCell.cellExists = true
-            lastCell.animate(duration: 0.15, completion: { [unowned self] in
+            previousCell = tableView.cellForRow(at: IndexPath(row: cellTag, section: 0)) as! AccordionCell
+            previousCell.isOpened = true
+            previousCell.animate(duration: 0.15, completion: { [unowned self] in
                 self.view.layoutIfNeeded()
             })
         }

@@ -10,7 +10,7 @@ import UIKit
 
 class AccordionCell: UITableViewCell {
     
-    var cellExists = false
+    var isOpened = false
     
     @IBOutlet weak var toggleAccordion: UIButton!
     
